@@ -92,4 +92,4 @@ x_test_new = np.array(x_test_new)
 x_test_new = np.reshape(x_test_new, (x_test_new.shape[0], x_test_new.shape[1], 1)) # reshaping np array
 pred_price = model.predict(x_test_new)
 pred_price = scaler.inverse_transform(pred_price)
-st.subheader(f'Based on the Past 60 Days, the Predicted Closing Price of {user_input} on 2025-04-14 is ${pred_price[0][0]:.2f}') # predicts next element in array
+st.subheader(f'Based on the Past 60 Days, the Predicted Closing Price of {user_input} on the Next Trading Day is ${pred_price[0][0]:.2f}') # predicts next element in array
