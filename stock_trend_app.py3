@@ -80,3 +80,16 @@ plt.xlabel('Time')
 plt.ylabel('Price')
 plt.legend()
 st.pyplot(fig2)
+
+# making prediction on future closing price
+
+quote = yf.download(user_input, start = '2010-01-01', end = '2025-04-11') # download data using yfinance
+last_60_days = pd.DataFrame(quote['Close'][-60:])
+last_60_scaled = scaler.fit_transform(last_60_days)
+x_test_new = []
+x_test_new.append(last_60_scaled)
+x_test_new = np.array(x_test_new)
+x_test_new = np.reshape(x_test_new, (x_test_new.shape[0], x_test_new.shape[1], 1)) # reshaping np array
+pred_price = model.predict(x_test_new)
+pred_price = scaler.inverse_transform(pred_price)
+st.subheader(f'The Predicted Closing Price of {user_input} on 2025-04-14 is ${pred_price[0][0]:.2f}') # predicts next element in array
