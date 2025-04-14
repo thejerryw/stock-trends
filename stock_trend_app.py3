@@ -1,3 +1,5 @@
+# stock_trend_app.py3 - takes a stock ticker, and displays various information/graphs on the stock–even making predictions on the closing price using data-training
+
 import numpy as np 
 import pandas as pd 
 import matplotlib.pyplot as plt 
